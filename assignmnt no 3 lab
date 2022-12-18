@@ -1,0 +1,51 @@
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+export default function ContactScreen() {
+  return (
+
+    //This View contain our two screens
+
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+     <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={Screen1} />
+        <Tab.Screen name="Settings" component={Screen2} />
+      </Tab.Navigator>
+    </NavigationContainer>
+    </View>
+  );
+}
+//1
+
+function Screen1() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+     <Text>Screen1</Text>
+      <Button
+        title="Go to Settings"
+        onPress={() => navigation.navigate('Screen2')}
+      />
+    </View>
+  );
+}
+//2
+
+function Screen2() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <Text>Screen2!</Text>
+    <Button title="Go to Home" onPress={() => navigation.navigate('screen1')} />
+  </View>
+  );
+}
+const Tab = createBottomTabNavigator();
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+});
